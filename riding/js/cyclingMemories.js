@@ -40,7 +40,7 @@ items.forEach((item, index) => {
         const text = el.querySelector('p').innerText;
 
         const videoID = youtubeIDs[index];
-        const youtubeURL = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&loop=1&playlist=${videoID}`;
+        const youtubeURL = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=0&loop=1&playlist=${videoID}`;
 
         // 텍스트 내용 삽입
         aside.querySelector('h2').innerText = num;
