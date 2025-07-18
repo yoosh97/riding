@@ -1,11 +1,8 @@
-//모든 article 요소들을 변수에 저장
+// 모든 article 요소들을 변수에 저장
 const items = document.querySelectorAll('article'),
     aside = document.querySelector('aside'),
-    close = document.querySelector('button'),
+    asideCloseBtn = document.querySelector('button'),
     iframe = document.querySelector('#ytPlayer');
-
-//article 개수 확인
-//console.log(items)
 
 // article 순서에 맞는 유튜브 영상 ID 배열 (실제 영상 ID로 교체)
 const youtubeIDs = [
@@ -18,12 +15,11 @@ const youtubeIDs = [
 // article 하나씩 반복
 items.forEach((item, index) => {
 
-    // 마우스 올리면 미리보기 video 재생 (section 내의 video만 해당)
+    // 마우스 올리면 미리보기 video 재생
     item.addEventListener('mouseenter', e => {
         const video = e.currentTarget.querySelector('video');
         video.play();
     });
-
 
     // 마우스 벗어나면 video 일시 정지
     item.addEventListener('mouseleave', e => {
@@ -31,8 +27,11 @@ items.forEach((item, index) => {
         video.pause();
     });
 
-    // 클릭하면 aside에 유튜브 영상과 텍스트 표시
+    // 클릭하면 aside에 유튜브 영상과 텍스트 표시 및 위치 이동
     item.addEventListener('click', e => {
+        const video = e.currentTarget.querySelector('video');
+        video.pause();
+
         const el = e.currentTarget;
 
         const num = el.querySelector('h2').innerText;
@@ -50,15 +49,25 @@ items.forEach((item, index) => {
         // iframe에 유튜브 영상 연결
         iframe.setAttribute('src', youtubeURL);
 
+
+        if (window.matchMedia('(max-width: 1024px)').matches) {
+            const articleTop = el.offsetTop;
+            aside.style.top = articleTop + 'px';
+            aside.style.display = 'block';
+        }
+
         // aside 열기
         aside.classList.add('on');
     });
 
-
     // 닫기 버튼 클릭 시 aside 닫고 iframe 영상 정지
-    close.addEventListener('click', () => {
+    asideCloseBtn.addEventListener('click', () => {
         aside.classList.remove('on');
+
+        if (window.matchMedia('(max-width: 1024px)').matches) {
+            aside.style.display = 'none';
+        }
         iframe.setAttribute('src', ''); // 유튜브 정지
     });
 
-})
+});
