@@ -64,9 +64,6 @@ items.forEach((item, index) => {
             article.style.opacity = '0.1';
         });
 
-
-
-
     });
 
     // 닫기 버튼 클릭 시 aside 닫고 iframe 영상 정지
