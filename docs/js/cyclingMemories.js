@@ -59,6 +59,7 @@ items.forEach((item, index) => {
         // aside 열기
         aside.classList.add('on');
 
+<<<<<<< HEAD
         // 모든 article 흐리게
         items.forEach(article => {
             article.style.opacity = '0.1';
@@ -69,6 +70,8 @@ items.forEach((item, index) => {
 
     });
 
+=======
+>>>>>>> b987d3dd874c224eef8ec109e4b58a96ff621ac4
     // 닫기 버튼 클릭 시 aside 닫고 iframe 영상 정지
     asideCloseBtn.addEventListener('click', () => {
         aside.classList.remove('on');

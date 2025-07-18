@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @charset "utf-8";
 
 main {
@@ -176,4 +177,181 @@ aside .txt h3 {
 aside .txt em,
 aside .txt p {
     font-size: 16px;
+=======
+@charset "utf-8";
+
+main {
+    flex-direction: column;
+    height: auto;
+    background: #333;
+}
+
+header,
+section {
+    width: 100%;
+    height: auto;
+}
+
+header {
+    padding: 5vh 5vw 2vh;
+    text-align: center;
+}
+
+header figure {
+    margin: 0 auto 10px;
+}
+
+nav {
+    position: static;
+    margin: 10px auto;
+    text-align: center;
+}
+
+nav ul {
+    justify-content: center;
+}
+
+nav ul li a {
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+section {
+    padding-top: 2vh;
+    flex-direction: column;
+}
+
+section article {
+    padding: 30px;
+    flex: 1 !important;
+    opacity: 1 !important;
+}
+section article::before {
+    width: 90%;
+}
+
+section article:hover {
+    flex: 1;
+}
+
+section article .inner {
+    flex-direction: column;
+}
+
+section article .inner .txt h2 {
+    font-size: 32px;
+    padding-top: 20px;
+}
+section article:hover .txt h2 {
+    font-size: 60px;
+    padding-top: 0;
+}
+
+section article .inner .txt h3 {
+    font-size: 20px;
+}
+section article .inner .txt em {
+    font-size: 16px;
+}
+
+section article .inner .txt p {
+    font-size: 15px;
+    margin-bottom: 30px;
+    word-break: keep-all;
+}
+section article:hover .txt {
+    width: 90%;
+}
+
+
+section article .inner figure {
+    margin: 20px;
+    width: 90%;
+    height: 30vh;
+    position: relative;     /* 자식 요소의 절대 위치 기준 */
+    overflow: hidden;       /* 넘치는 비디오 잘라냄 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section article .inner figure video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;           /* 요소의 부모 영역 채우되 비율 유지 */
+    aspect-ratio: 16 / 9;        /* 비율 고정 (원하는 비율로 조정 가능) */
+}
+
+section article:hover figure {
+    transform: translateY(-2vh);
+    transform: translateX(-2vh);
+}
+
+
+footer {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    color: #797878;
+    background: rgb(252, 251, 251);
+}
+
+.br-pc {
+    display: none;
+}
+
+footer {
+    white-space: nowrap;
+}
+
+
+
+
+
+/* aside */
+aside {
+    position: absolute;     /* 기준 요소 기준으로 위치 이동 가능하게 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 70px 5vw;
+    background: #333;
+    display: none;          /* 기본은 숨김 */
+    z-index: 1000;          /* 위로 올리기 */
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+
+aside .txt {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+aside figure {
+    width: 100%;
+    height: 45vh;
+}
+
+aside .txt h2 {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+aside .txt h3 {
+    font-size: 22px;
+    padding-top: 20px;
+}
+
+aside .txt em,
+aside .txt p {
+    font-size: 16px;
+>>>>>>> b987d3dd874c224eef8ec109e4b58a96ff621ac4
 }
