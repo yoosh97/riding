@@ -8,27 +8,29 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 * {box-sizing: border-box;}
-
-@media screen and (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
-  header, section {
-    width: 100%;
-    height: auto;
-  }
-  section article .inner .txt h2 {
-    font-size: 32px;
-  }
-}
 
 body {
   font-family: 'Pretendard Variable', sans-serif;
 }
 
 main {
+    position: relative;
     width: 100%;
     height: 100vh;
     background: #333;
@@ -57,7 +59,7 @@ header span {
     font-weight: 300;
     font-size: 20px;
     line-height: 1.4;
-    font-family: 'SBAggroB';
+    font-family: 'GmarketSansMedium';
     color: rgba(255, 255, 255, 0.65);
 }
 
@@ -70,6 +72,9 @@ footer {
     font-family: "Pretendard Variable";
     color: rgba(255, 255, 255, 0.65);
     line-height: 1.8;
+}
+.br-pc {
+  display: inline;
 }
 
 /* nav */
@@ -111,7 +116,7 @@ section article::before {
     top: 0; left: -200px;
     background: #444;
     opacity: 0;
-    transition: 1s;
+    transition: all 0.5s ease;
 }
 section article .inner {
     width: 100%;
@@ -123,14 +128,14 @@ section article .inner {
 }
 section article .inner .txt {
     width: 100%;
-    transition: 0.5s;
+    transition: all 0.5s ease;
 }
 section article .inner .txt h3 {
     font-weight: 500;
     font-size: 24px;
     color: #fff;
     margin: 30px 0 20px ;
-    transition: 1s;
+    transition: all 0.5s ease;
 }
 section article .inner .txt em {
     font-weight: 300;
@@ -145,7 +150,7 @@ section article .inner .txt h2 {
     color: #fff;
     margin-bottom: 20px;
     padding-top: 40px;
-    transition: 1s;
+    transition: all 0.5s ease;
 }
 section article .inner .txt h2::after {
     content: '';
@@ -154,27 +159,28 @@ section article .inner .txt h2::after {
     height: 2px;
     background: #777;
     margin-top: 10px;    
-    transition: 1.5s;
+    transition: all 0.5s ease;
 }
 section article .inner .txt p {
     font-size: 16px;    
     font-weight: 300;
     line-height: 1.4;
     color: #d4d4d4;
+    word-break: keep-all;
 }
 section article .inner figure {
+    aspect-ratio: 16 / 9;
     width: 100%;
-    height: 18vh;
     background: #777;
     overflow: hidden;
     filter: saturate(10%);
     transform-origin: left center;
-    transition: 1s;
+    transition: all 0.5s ease;
 }
 section article .inner figure video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover;    
     transform: scale(1.15);
 }
 section article:hover {
@@ -187,7 +193,7 @@ section article:hover::before {
     opacity: 1;
 }
 section article:hover .txt {
-    width: 75%;
+    width: 80%;
 }
 section article:hover .txt h2 {
     font-size: 70px;
@@ -200,7 +206,7 @@ section article:hover .txt h2::after {
 section article:hover figure {
     height: 25vh;
     filter: saturate(120%);
-    transform: translateY(3vh);
+    transform: translateY(-3vh);
 }
 
 
@@ -216,7 +222,7 @@ aside {
     display: flex;
     justify-content: space-between;
     opacity: 0;
-    transition: 1s;
+    transition: all 0.5s ease;
 }
 aside.on {
     opacity: 1;
@@ -242,13 +248,13 @@ aside .txt h3 {
     color: #fff;
     margin-bottom: 40px;
     padding-top: 40px;
-    transition: 1s;
+    transition: all 0.5s ease;
 }
 aside .txt em {
     font-weight: 300;
     font-size: 20px;
     color: #fff;
-    transition: 1s;
+    transition: all 0.5s ease;
 }
 
 
@@ -269,8 +275,8 @@ aside .txt button {
 }
 
 aside figure {
-    width: 72%;
-    height: 90%;    
+    aspect-ratio: 16 / 9;
+    width: 80%;    
     overflow: hidden;
 }
 aside figure iframe {

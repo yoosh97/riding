@@ -1,0 +1,179 @@
+@charset "utf-8";
+
+main {
+    flex-direction: column;
+    height: auto;
+    background: hsla(0, 0%, 20%, 0.692);
+}
+
+header,
+section {
+    width: 100%;
+    height: auto;
+}
+
+header {
+    padding: 5vh 5vw 2vh;
+    text-align: center;
+}
+
+header figure {
+    margin: 0 auto 10px;
+}
+
+nav {
+    position: static;
+    margin: 10px auto;
+    text-align: center;
+}
+
+nav ul {
+    justify-content: center;
+}
+
+nav ul li a {
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+section {
+    padding-top: 2vh;
+    flex-direction: column;
+}
+
+section article {
+    padding: 30px 15px 70px;
+    flex: 1 !important;
+}
+section article::before {
+    width: 80%;
+    padding: 30px 0 0;
+}
+
+section article:hover {
+    flex: 1;
+    opacity: 1;
+    z-index: 2;    
+} 
+
+section article .inner {
+    flex-direction: column;
+    align-items: stretch; /* 또는 stretch */
+    height: auto;
+}
+
+section article .inner .txt h2 {
+    font-size: 32px;
+    padding-top: 20px;
+}
+section article:hover .txt h2 {
+    font-size: 60px;
+}
+
+section article .inner .txt h3 {
+    font-size: 20px;
+    margin: 25px 0 15px;}
+
+section article .inner .txt em {
+    font-size: 16px;
+}
+
+section article .inner .txt p {
+    font-size: 15px;
+    margin-bottom: 30px;
+    word-break: keep-all;
+}
+section article:hover .txt {
+    width: 80%;
+}
+section article .inner figure {
+    display: block; /* 또는 flex */
+    width: 80%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+section article:hover figure {
+    aspect-ratio: 16 / 9; 
+    width: 85%;
+    height: 100%;
+}
+
+section article .inner figure video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;           /* 요소의 부모 영역 채우되 비율 유지 */
+    
+}
+
+
+footer {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    color: #1b1a1a;
+    background: rgb(252, 251, 251);
+}
+
+.br-pc {
+    display: none;
+}
+
+footer {
+    white-space: nowrap;
+}
+
+
+
+
+
+/* aside */
+aside {
+    position: absolute;     /* 기준 요소 기준으로 위치 이동 가능하게 */
+    top: 0;
+    left: 0;
+    width: 98%;
+    height: auto;
+    padding: 70px 5vw;
+    background: #333;
+    display: none;          /* 기본은 숨김 */
+    z-index: 1000;          /* 위로 올리기 */
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+aside .txt {
+    width: 100%;
+    margin-bottom: 20px;
+}
+aside .txt button {
+    font-size: 24px;
+}
+
+
+aside figure {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
+aside .txt h2 {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+aside .txt h3 {
+    font-size: 22px;
+    padding-top: 15px;
+}
+
+aside .txt em,
+aside .txt p {
+    font-size: 16px;
+}
