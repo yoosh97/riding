@@ -1,73 +1,287 @@
-// 모든 article 요소들을 변수에 저장
-const items = document.querySelectorAll('article'),
-    aside = document.querySelector('aside'),
-    asideCloseBtn = document.querySelector('button'),
-    iframe = document.querySelector('#ytPlayer');
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@100&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
-// article 순서에 맞는 유튜브 영상 ID 배열 (실제 영상 ID로 교체)
-const youtubeIDs = [
-    "beUdK82nAuU", // 01: 국토종주
-    "cUwBO8fS48I", // 02: 삼척-강릉
-    "6nq4lbXGi0w", // 03: 대진-양양
-    "2jUoDxyO0rk"  // 04: 천호 벚꽃
-];
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
-// article 하나씩 반복
-items.forEach((item, index) => {
-
-    // 마우스 올리면 미리보기 video 재생
-    item.addEventListener('mouseenter', e => {
-        const video = e.currentTarget.querySelector('video');
-        video.play();
-    });
-
-    // 마우스 벗어나면 video 일시 정지
-    item.addEventListener('mouseleave', e => {
-        const video = e.currentTarget.querySelector('video');
-        video.pause();
-    });
-
-    // 클릭하면 aside에 유튜브 영상과 텍스트 표시 및 위치 이동
-    item.addEventListener('click', e => {
-        const video = e.currentTarget.querySelector('video');
-        video.pause();
-
-        const el = e.currentTarget;
-
-        const num = el.querySelector('h2').innerText;
-        const title = el.querySelector('h3').innerText;
-        const text = el.querySelector('p').innerText;
-
-        const videoID = youtubeIDs[index];
-        const youtubeURL = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=0&loop=1&playlist=${videoID}`;
-
-        // 텍스트 내용 삽입
-        aside.querySelector('h2').innerText = num;
-        aside.querySelector('h3').innerText = title;
-        aside.querySelector('p').innerText = text;
-
-        // iframe에 유튜브 영상 연결
-        iframe.setAttribute('src', youtubeURL);
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
-        if (window.matchMedia('(max-width: 1024px)').matches) {
-            const articleTop = el.offsetTop;
-            aside.style.top = articleTop + 'px';
-            aside.style.display = 'block';
-        }
+* {box-sizing: border-box;}
 
-        // aside 열기
-        aside.classList.add('on');
-    });
+body {
+  font-family: 'Pretendard Variable', sans-serif;
+}
 
-    // 닫기 버튼 클릭 시 aside 닫고 iframe 영상 정지
-    asideCloseBtn.addEventListener('click', () => {
-        aside.classList.remove('on');
+main {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #333;
+    display: flex;
+}
 
-        if (window.matchMedia('(max-width: 1024px)').matches) {
-            aside.style.display = 'none';
-        }
-        iframe.setAttribute('src', ''); // 유튜브 정지
-    });
+header {
+    width: 20%;
+    height: 100%;
+    padding: 10vh 5vw;
+    position: relative;
+    z-index: 3;
+}
+header h1 {
+    color: #fff;
+    text-align: center;
+}
+header figure {
+    width: 70px;
+    height: 70px;
+    background: url(../img/icon-bicycle_white.png) no-repeat center/cover;
+    margin-bottom: 15px;
+}
+header span {
+    display: block;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.4;
+    font-family: 'GmarketSansMedium';
+    color: rgba(255, 255, 255, 0.65);
+}
 
-});
+/* footer */
+footer {
+    position: fixed;
+    bottom: 100px; left: 5vw;
+    font-size: 15px;
+    font-weight: lighter;
+    font-family: "Pretendard Variable";
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.8;
+}
+.br-pc {
+  display: inline;
+}
+
+/* nav */
+nav {
+    position: absolute;
+    top: 10vh; right: 5vw;
+    z-index: 3;
+}
+nav ul {display: flex;}
+nav ul li a {
+    font-size: 18px;
+    color: #bbb;
+    margin-right: 30px;
+}
+
+/* SECTION */
+section {
+    width: 80%;
+    height: 100%;
+    padding-top: 15vh;
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+section article {
+    position: relative;
+    flex: 1;
+    padding: 40px 40px 100px;
+    opacity: 0.6;
+    z-index: 1;
+    transition: opacity 1s, flex 1s;
+    cursor: pointer;
+}
+section article::before {
+    content: '';
+    display: block;
+    width: 80%; height: 95%;
+    position: absolute;
+    top: 0; left: -200px;
+    background: #444;
+    opacity: 0;
+    transition: 1s;
+}
+section article .inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    position: relative;
+}
+section article .inner .txt {
+    width: 100%;
+    transition: 0.5s;
+}
+section article .inner .txt h3 {
+    font-weight: 500;
+    font-size: 24px;
+    color: #fff;
+    margin: 30px 0 20px ;
+    transition: 1s;
+}
+section article .inner .txt em {
+    font-weight: 300;
+    font-size: 18px;
+    color: #fff;
+    transition: 1s;
+}
+section article .inner .txt h2 {
+    font-weight: 100;
+    font-size: 40px;
+    font-family: 'Alegreya Sans SC';
+    color: #fff;
+    margin-bottom: 20px;
+    padding-top: 40px;
+    transition: 1s;
+}
+section article .inner .txt h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #777;
+    margin-top: 10px;    
+    transition: 1.5s;
+}
+section article .inner .txt p {
+    font-size: 16px;    
+    font-weight: 300;
+    line-height: 1.4;
+    color: #d4d4d4;
+    word-break: keep-all;
+}
+section article .inner figure {
+    width: 100%;
+    height: 18vh;
+    background: #777;
+    overflow: hidden;
+    filter: saturate(10%);
+    transform-origin: left center;
+    transition: 1s;
+}
+section article .inner figure video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.15);
+}
+section article:hover {
+    flex: 1.5;
+    opacity: 1;
+    z-index: 2;
+}
+section article:hover::before {
+    left: 0;
+    opacity: 1;
+}
+section article:hover .txt {
+    width: 80%;
+}
+section article:hover .txt h2 {
+    font-size: 70px;
+    padding-top: 0;
+}
+section article:hover .txt h2::after {
+    width: 120px;
+    background: orange;
+}
+section article:hover figure {
+    height: 25vh;
+    filter: saturate(120%);
+    transform: translateY(3vh);
+}
+
+
+/* aside */
+aside {
+    width: 100%;
+    height: 100vh;
+    background: #222;
+    position: absolute;
+    top: 0; left: -100%;
+    z-index: 2;    
+    padding: 20vh 7vw 14vh 20vw;   
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    transition: 1s;
+}
+aside.on {
+    opacity: 1;
+    left: 0;
+}
+aside .txt {
+    width: 25%;
+    height: 100%;
+}
+
+aside .txt h2 {
+    font-size: 80px;
+    font-weight: 100;
+    line-height: 1;
+    font-family: 'Alegreya Sans SC';
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+aside .txt h3 {
+    font-weight: 500;
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 40px;
+    padding-top: 40px;
+    transition: 1s;
+}
+aside .txt em {
+    font-weight: 300;
+    font-size: 20px;
+    color: #fff;
+    transition: 1s;
+}
+
+
+aside .txt p {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #d4d4d4 ;
+    margin-bottom: 60px;
+    word-break: keep-all;
+}
+aside .txt button {
+    cursor: pointer;
+    color: orange;
+    background: none;
+    font-family: 'Alegreya Sans SC';
+    font-size: 18px;
+    font-weight: bold;
+}
+
+aside figure {
+    width: 72%;
+    height: 90%;    
+    overflow: hidden;
+}
+aside figure iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
