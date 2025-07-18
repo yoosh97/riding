@@ -229,8 +229,9 @@ aside.on {
     left: 0;
 }
 aside .txt {
-    width: 25%;
+    width: 30%;
     height: 100%;
+    margin-right: 30px;
 }
 
 aside .txt h2 {
