@@ -63,7 +63,6 @@ items.forEach((item, index) => {
         items.forEach(article => {
             article.style.opacity = '0.1';
         });
-
     });
 
     // 닫기 버튼 클릭 시 aside 닫고 iframe 영상 정지
@@ -79,7 +78,5 @@ items.forEach((item, index) => {
         items.forEach(article => {
             article.style.opacity = '1';
         });
-
     });
-
 });
