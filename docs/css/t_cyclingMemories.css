@@ -155,24 +155,23 @@ aside .txt {
 aside .txt button {
     font-size: 24px;
 }
-
-
-aside figure {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-}
-
 aside .txt h2 {
     font-size: 50px;
     font-weight: 600;
 }
-
 aside .txt h3 {
     font-size: 22px;
     padding-top: 15px;
 }
-
 aside .txt em,
 aside .txt p {
     font-size: 16px;
+}
+
+aside .vid {
+    width: 100%;
+}
+aside figure {
+    aspect-ratio: 16 / 9;
+    width: 100%;
 }
